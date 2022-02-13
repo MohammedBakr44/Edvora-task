@@ -3,14 +3,21 @@ import Display from "./Display";
 
 const Filters = (props) => {
   const [filters, setFilters] = useState({});
-  const [res, setRes] = useState(props.data);
   const [filtered, setFiltered] = useState(props.data);
 
   const handleChange = (e) => {
     setFilters({ ...filters, [`${e.target.name}`]: e.target.value });
-    setFiltered(
-      res.filter((item) => item[`${e.target.name}`] == e.target.value)
-    );
+    if (e.target.name != "product_name") {
+      setFiltered(
+        filtered.filter(
+          (item) => item.address[`${e.target.name}`] == e.target.value
+        )
+      );
+    } else {
+      setFiltered(
+        filtered.filter((item) => item[`${e.target.name}`] == e.target.value)
+      );
+    }
   };
   return (
     <>
@@ -20,7 +27,7 @@ const Filters = (props) => {
         <hr />
         <select name="product_name" onChange={handleChange}>
           <option value="">Products</option>
-          {props.data.map((item, i) => {
+          {filtered.map((item, i) => {
             return (
               <option key={i} value={item["product_name"]}>
                 {item["product_name"]}
@@ -29,9 +36,9 @@ const Filters = (props) => {
           })}
         </select>
 
-        <select name="address.state" onChange={handleChange}>
+        <select name="state" onChange={handleChange}>
           <option value="">State</option>
-          {props.data.map((item, i) => {
+          {filtered.map((item, i) => {
             return (
               <option key={i} value={item.address.state}>
                 {item.address.state}
@@ -40,9 +47,9 @@ const Filters = (props) => {
           })}
         </select>
 
-        <select name="address.city" onChange={handleChange}>
+        <select name="city" onChange={handleChange}>
           <option value="">City</option>
-          {props.data.map((item, i) => {
+          {filtered.map((item, i) => {
             return (
               <option key={i} value={item.address.city}>
                 {item.address.city}
