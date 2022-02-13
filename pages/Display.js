@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Product from "./Product";
 
-const Display = (props) => {
+const Display = (props = null) => {
   const products = new Set(props.data.map((item) => item.product_name));
 
   return (

@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import Filters from "./filters";
 
-export default function Home({ res }) {
+export default function Home(props = null) {
   useEffect(() => {}, []);
-
-  console.log(res);
 
   return (
     <div className="container">
@@ -12,7 +10,7 @@ export default function Home({ res }) {
         <h1>Edvora</h1>
         <h3>Products</h3>
       </div>
-      <Filters data={res} />
+      <Filters data={props.res} />
       <style jsx global>{`
         html,
         body {

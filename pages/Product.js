@@ -1,6 +1,6 @@
 import Card from "./Card";
 
-const Product = (props) => {
+const Product = (props = null) => {
   return (
     <div className="product">
       <div className="header">

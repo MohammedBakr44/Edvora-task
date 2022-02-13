@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Display from "./Display";
 
-const Filters = (props) => {
+const Filters = (props = null) => {
   const [filters, setFilters] = useState({});
   const [filtered, setFiltered] = useState(props.data);
 

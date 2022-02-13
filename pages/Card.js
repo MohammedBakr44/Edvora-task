@@ -1,4 +1,4 @@
-const Card = (props) => {
+const Card = (props = null) => {
   return (
     <div className="card">
       <div className="box1">
